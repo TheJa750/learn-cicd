@@ -23,7 +23,7 @@ func TestGetAPIKey(t *testing.T) {
 		expected_err error
 	}{
 		"correct header":   {input: correctHeader, want: apiKey, expected_err: nil},
-		"missing 'ApiKey'": {input: missingAPIKey, want: "", expected_err: ErrNoAuthHeaderIncluded},
+		"missing 'ApiKey'": {input: missingAPIKey, want: "", expected_err: ErrMalformedAuthHeader},
 		"wrong header Key": {input: noAuthHeader, want: "", expected_err: ErrNoAuthHeaderIncluded},
 		"blank API Key":    {input: blankAPIKey, want: "", expected_err: nil},
 	}
