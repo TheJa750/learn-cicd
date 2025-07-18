@@ -20,4 +20,12 @@ jobs:
             
             - name: Run build script
               run: scripts/buildprod.sh
-              
+                
+            - name: Set up gcloud
+              uses: google-github-actions/setup-gcloud@v2
+              with:
+                service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+                project_id: turing-terminus-466317-h8
+
+            - name: Push build to GCloud
+              run: gcloud builds submit --tag us-central1-docker.pkg.dev/turing-terminus-466317-h8/notely-ar-repo/theja750/notely:latest .
